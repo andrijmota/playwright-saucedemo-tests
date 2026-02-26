@@ -1,0 +1,7 @@
+win+r > code > enter
+
+У VS Code:
+1️. Натисни File
+2️. Обери Open Folder…
+3️. Перейди в: Desktop → playwright-project
+4️. Натисни Select Folder
