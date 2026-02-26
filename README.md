@@ -34,6 +34,8 @@ tests/
   ├── saucedemo-checkout-negative.spec.ts
   ├── saucedemo-checkout-positive.spec.ts
 playwright.config.ts
+
+
 ▶️ How to Run Tests
 
 Install dependencies:
