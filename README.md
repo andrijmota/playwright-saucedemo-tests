@@ -1,79 +1,134 @@
-🚀 Playwright E2E Tests – SauceDemo
+# 🚀 Playwright UI + API Tests – SauceDemo & DummyJSON
 
-This project contains end-to-end automated tests for the SauceDemo web application using Playwright + TypeScript.
+This project contains automated UI and API tests using Playwright + TypeScript.
 
-📌 Project Overview
+---
 
-The test suite covers:
+## 📌 Project Overview
 
-🔐 Login negative scenarios
+The test suite covers both **UI (E2E)** and **API testing**:
 
-🛒 Checkout positive flow
+### 🔐 UI Tests (SauceDemo)
 
-❌ Checkout validation (negative cases)
+* Login negative scenarios
+* Checkout positive flow
+* Checkout validation (negative cases)
+* UI error handling
+* Cancel navigation behavior
 
-UI error handling
+### 🌐 API Tests (DummyJSON)
 
-Cancel navigation behavior
+* Get all users
+* Get user by ID
+* Create user
 
-The goal of this project is to demonstrate practical automation testing skills and E2E test structure.
+The goal of this project is to demonstrate practical automation testing skills, including UI and API testing, debugging, and test structure.
 
-🛠 Tech Stack
+---
 
-Playwright
+## 🛠 Tech Stack
 
-TypeScript
+* Playwright
+* TypeScript
+* Node.js
+* GitHub Actions (CI ready)
 
-Node.js
+---
 
-GitHub Actions (CI ready)
+## 📂 Project Structure
 
-📂 Project Structure
+```text
 tests/
-  ├── saucedemo-login-negative.spec.ts
-  ├── saucedemo-checkout-negative.spec.ts
-  ├── saucedemo-checkout-positive.spec.ts
+  api/
+    users/
+      get-users.spec.ts
+      get-user-by-id.spec.ts
+      create-user.spec.ts
+  ui/
+    saucedemo-login-negative.spec.ts
+    saucedemo-checkout-negative.spec.ts
+    saucedemo-checkout-positive.spec.ts
+
 playwright.config.ts
+```
 
+---
 
-▶️ How to Run Tests
+## ▶️ How to Run Tests
 
 Install dependencies:
 
+```bash
 npm install
+npx playwright install
+```
 
-Run tests:
+Run all tests:
 
+```bash
 npx playwright test
+```
+
+Run UI tests only:
+
+```bash
+npx playwright test tests/ui
+```
+
+Run API tests only:
+
+```bash
+npx playwright test tests/api
+```
 
 Run in headed mode:
 
+```bash
 npx playwright test --headed
+```
 
-Open HTML report:
+---
 
+## 📊 Reporting
+
+* HTML Reporter
+
+```bash
 npx playwright show-report
-🧪 Example Covered Scenarios
+```
 
-Required field validation
+* Trace Viewer (for debugging failed tests)
 
-Error message appearance and close behavior
+---
 
-Navigation between checkout steps
+## 🧪 Example Covered Scenarios
 
-Successful order completion
+### UI
 
-Cancel button functionality
+* Required field validation
+* Error message behavior
+* Navigation between checkout steps
+* Successful order completion
+* Cancel flow
 
-📊 Reporting
+### API
 
-HTML Reporter
+* Validate response status codes
+* Verify response structure
+* Validate returned user data
+* Create new user and verify response
 
-Trace Viewer
+---
 
-Debug mode support
+## 💡 Notes
 
-👨‍💻 Author
+* API tests use DummyJSON fake REST API
+* Retries and trace are enabled for debugging
+* Tests are structured for scalability
+
+---
+
+## 👨‍💻 Author
 
 Andrii Mota
 QA Automation Engineer (Playwright / TypeScript)
