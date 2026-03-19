@@ -1,43 +1,67 @@
-# 🚀 Playwright UI + API Tests – SauceDemo & DummyJSON
+# 🚀 Playwright UI + API Tests – SauceDemo, DummyJSON & Certificate App
 
-This project contains automated UI and API tests using Playwright + TypeScript.
+This project contains automated UI and API tests using Playwright + TypeScript, as well as an E2E test created as part of a QA test assignment.
 
 ---
 
 ## 📌 Project Overview
 
-The test suite covers both **UI (E2E)** and **API testing**:
+The test suite covers:
 
 ### 🔐 UI Tests (SauceDemo)
 
-* Login negative scenarios
-* Checkout positive flow
-* Checkout validation (negative cases)
-* UI error handling
-* Cancel navigation behavior
+- Login negative scenarios
+- Checkout positive flow
+- Checkout validation (negative cases)
+- UI error handling
+- Cancel navigation behavior
 
 ### 🌐 API Tests (DummyJSON)
 
-* Get all users
-* Get user by ID
-* Create user
+- Get all users
+- Get user by ID
+- Create user
 
-The goal of this project is to demonstrate practical automation testing skills, including UI and API testing, debugging, and test structure.
+---
+
+## 🧾 Test Task – Certificate Storage App
+
+As part of the QA test assignment, an additional E2E test was implemented for the certificate storage application.
+
+### ✅ Covered Scenario
+
+- Open application (StackBlitz preview)
+- Handle "Run this project" gate screen
+- Upload certificate via drag & drop
+- Verify certificate appears in the list
+- Select certificate
+- Verify certificate details:
+  - Subject (Common Name)
+  - Issuer
+  - Valid From / Valid To
+
+---
+
+## ⚠️ Notes
+
+- The application is hosted on StackBlitz, which introduces an intermediate anti-phishing screen ("Run this project")
+- This may affect test stability
+- Retry logic is implemented in the test to handle this behavior
+- Drag & drop upload is handled programmatically via DataTransfer
 
 ---
 
 ## 🛠 Tech Stack
 
-* Playwright
-* TypeScript
-* Node.js
-* GitHub Actions (CI ready)
+- Playwright
+- TypeScript
+- Node.js
+- GitHub Actions (CI ready)
 
 ---
 
 ## 📂 Project Structure
 
-```text
 tests/
   api/
     users/
@@ -48,9 +72,12 @@ tests/
     saucedemo-login-negative.spec.ts
     saucedemo-checkout-negative.spec.ts
     saucedemo-checkout-positive.spec.ts
+  certificate.spec.ts
+
+fixtures/
+  cert.cer
 
 playwright.config.ts
-```
 
 ---
 
@@ -58,46 +85,34 @@ playwright.config.ts
 
 Install dependencies:
 
-```bash
 npm install
 npx playwright install
-```
 
 Run all tests:
 
-```bash
 npx playwright test
-```
 
 Run UI tests only:
 
-```bash
 npx playwright test tests/ui
-```
 
 Run API tests only:
 
-```bash
 npx playwright test tests/api
-```
 
-Run in headed mode:
+Run certificate E2E test:
 
-```bash
-npx playwright test --headed
-```
+npx playwright test tests/certificate.spec.ts --project=chromium --workers=1 --headed
 
 ---
 
 ## 📊 Reporting
 
-* HTML Reporter
+HTML Reporter:
 
-```bash
 npx playwright show-report
-```
 
-* Trace Viewer (for debugging failed tests)
+Trace Viewer is available for debugging failed tests.
 
 ---
 
@@ -105,30 +120,32 @@ npx playwright show-report
 
 ### UI
 
-* Required field validation
-* Error message behavior
-* Navigation between checkout steps
-* Successful order completion
-* Cancel flow
+- Required field validation
+- Error message behavior
+- Navigation between checkout steps
+- Successful order completion
+- Cancel flow
 
 ### API
 
-* Validate response status codes
-* Verify response structure
-* Validate returned user data
-* Create new user and verify response
+- Validate response status codes
+- Verify response structure
+- Validate returned user data
+- Create new user and verify response
 
 ---
 
-## 💡 Notes
+## 🎯 Highlights
 
-* API tests use DummyJSON fake REST API
-* Retries and trace are enabled for debugging
-* Tests are structured for scalability
+- E2E automation with Playwright + TypeScript
+- File upload via drag & drop
+- Handling unstable UI (StackBlitz preview gate)
+- Combined UI + API testing in one project
+- Scalable and structured test architecture
 
 ---
 
 ## 👨‍💻 Author
 
-Andrii Mota
+Andrii Mota  
 QA Automation Engineer (Playwright / TypeScript)
